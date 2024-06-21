@@ -1,0 +1,55 @@
+/*    */ package net.minecraft.item;
+/*    */ 
+/*    */ import net.minecraft.block.Block;
+/*    */ import net.minecraft.entity.player.EntityPlayer;
+/*    */ import net.minecraft.util.BlockPos;
+/*    */ import net.minecraft.util.EnumFacing;
+/*    */ import net.minecraft.world.World;
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ public class ItemSeedFood
+/*    */   extends ItemFood
+/*    */ {
+/*    */   private Block crops;
+/*    */   private Block soilId;
+/*    */   
+/*    */   public ItemSeedFood(int healAmount, float saturation, Block crops, Block soil) {
+/* 18 */     super(healAmount, saturation, false);
+/* 19 */     this.crops = crops;
+/* 20 */     this.soilId = soil;
+/*    */   }
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */ 
+/*    */   
+/*    */   public boolean onItemUse(ItemStack stack, EntityPlayer playerIn, World worldIn, BlockPos pos, EnumFacing side, float hitX, float hitY, float hitZ) {
+/* 31 */     if (side != EnumFacing.UP)
+/*    */     {
+/* 33 */       return false;
+/*    */     }
+/* 35 */     if (!playerIn.canPlayerEdit(pos.offset(side), side, stack))
+/*    */     {
+/* 37 */       return false;
+/*    */     }
+/* 39 */     if (worldIn.getBlockState(pos).getBlock() == this.soilId && worldIn.isAirBlock(pos.up())) {
+/*    */       
+/* 41 */       worldIn.setBlockState(pos.up(), this.crops.getDefaultState());
+/* 42 */       stack.stackSize--;
+/* 43 */       return true;
+/*    */     } 
+/*    */ 
+/*    */     
+/* 47 */     return false;
+/*    */   }
+/*    */ }
+
+
+/* Location:              C:\Users\andre\Downloads\Slack.jar!\net\minecraft\item\ItemSeedFood.class
+ * Java compiler version: 8 (52.0)
+ * JD-Core Version:       1.1.3
+ */
