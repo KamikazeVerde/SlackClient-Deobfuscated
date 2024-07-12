@@ -1,2 +1,2 @@
 # SlackClient-Deobfuscated
- LiquidBounce skid selled for 10$ as an "Hypixel Client"
+ LiquidBounce skid sold for 10$ as an "Hypixel Client"
